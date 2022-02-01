@@ -10,6 +10,7 @@ class _LoginPageState extends State<LoginPage> {
 
   String name = " ";
   bool changeButton = false;
+  int temp = 1;
 
   @override
   Widget build(BuildContext context) {
