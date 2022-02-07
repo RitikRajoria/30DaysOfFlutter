@@ -2,16 +2,7 @@ import 'package:flutter/material.dart';
 
 
 class CatalogModel{
-  static final items = [
-  Item(
-    id: 1,
-    name: "asdasdas",
-    desc: "hhjdfhdjdash hsdjfhsdjh",
-    price: 898,
-    color: "#33505a",
-    image: "https://lh5.googleusercontent.com/proxy/sdVrrPW89fxuHTufgegoz1tFzqZjprNFPPecLa6ZJyCzbDHWKlSCCzN_AMVsklkMHQFgr1gpPUXGEb4GNTBTcunUTCjsO_ImJqGPRMwnjolGkEQC8f6lGS6HQfU3tscghilSBP0okPN-updG044T2dITVo-u6oUSiJFU7pKSKOfr1qO9B-yUCmPaFYvhBYKd1dYRpfhc_fBFatA=w1200-h630-p-k-no-nu",
-  ),
-];
+  static List<Item>? items;
 }
 
 class Item {
@@ -23,4 +14,24 @@ class Item {
   final String color;
 
   Item({required this.id, required this.name, required this.desc, required this.price, required this.image, required this.color}); 
+
+  factory Item.fromMap(Map<String,dynamic> map){
+    return Item(
+      id: map["id"],
+      name: map["name"],
+      desc: map["desc"],
+      price: map["price"],
+      image: map["image"],
+      color: map["color"],
+    );
+  }
+
+  toMap() => {
+      "id": id,
+      "name": name,
+      "desc": desc,
+      "price": price,
+      "image": image,
+      "color": color,
+  };
 }
