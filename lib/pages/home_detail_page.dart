@@ -11,58 +11,67 @@ class HomeDetailPage extends StatelessWidget {
         super(key: key);
   @override
   Widget build(BuildContext context) {
- 
-        var captionStyle = context.captionStyle;
-                return Scaffold(
-                  appBar: AppBar(
-                    backgroundColor: MyTheme.creamColor,
-                  ),
-                  backgroundColor: MyTheme.creamColor,
-                  bottomNavigationBar:  Container(
-                    color: Colors.white,
-                    child: ButtonBar(
-                    alignment: MainAxisAlignment.spaceBetween,
-                    buttonPadding: EdgeInsets.zero,
-                    children: [
-                      "\$${catalog.price}".text.bold.xl4.red600.make(),
-                      ElevatedButton(
-                        onPressed: () {},
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                            MyTheme.darkBluishColor,
-                          ),
-                          shape: MaterialStateProperty.all(
-                            StadiumBorder(),
-                          ),
-                        ),
-                        child: "Buy".text.make(),
-                      ).wh(100, 50),
-                    ],
-                ).p32(),
-                  ),
-                  body: SafeArea(
-                    bottom: false,
+    var captionStyle = context.captionStyle;
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: MyTheme.creamColor,
+      ),
+      backgroundColor: MyTheme.creamColor,
+      bottomNavigationBar: Container(
+        color: Colors.white,
+        child: ButtonBar(
+          alignment: MainAxisAlignment.spaceBetween,
+          buttonPadding: EdgeInsets.zero,
+          children: [
+            "\$${catalog.price}".text.bold.xl4.red600.make(),
+            ElevatedButton(
+              onPressed: () {},
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(
+                  MyTheme.darkBluishColor,
+                ),
+                shape: MaterialStateProperty.all(
+                  StadiumBorder(),
+                ),
+              ),
+              child: "Add to Cart".text.make(),
+            ).wh(120, 50),
+          ],
+        ).p32(),
+      ),
+      body: SafeArea(
+        bottom: false,
+        child: Column(
+          children: [
+            Hero(
+              tag: Key(catalog.id.toString()),
+              child: Image.network(catalog.image),
+            ).h32(context),
+            Expanded(
+              child: VxArc(
+                height: 30.0,
+                arcType: VxArcType.CONVEY,
+                edge: VxEdge.TOP,
+                child: Container(
+                  color: Colors.white,
+                  width: context.screenWidth,
+                  child: SingleChildScrollView(
                     child: Column(
                       children: [
-                        Hero(
-                          tag: Key(catalog.id.toString()),
-                          child: Image.network(catalog.image),
-                        ).h32(context),
-                        Expanded(
-                          child: VxArc(
-                            height: 30.0,
-                            arcType: VxArcType.CONVEY,
-                            edge: VxEdge.TOP,
-                            child: Container(
-                              color: Colors.white,
-                              width: context.screenWidth,
-                              child: Column(
-                                children: [
-                                  catalog.name.text.xl4.color(MyTheme.darkBluishColor).bold.make(),
-                                  catalog.desc.text.xl.textStyle(captionStyle!).make(),
-                                  10.heightBox,
-                                ],
-                  ).py64(),
+                        catalog.name.text.xl4
+                            .color(MyTheme.darkBluishColor)
+                            .bold
+                            .make(),
+                        catalog.desc.text.xl.textStyle(captionStyle!).make(),
+                        10.heightBox,
+                        "The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using like readable English. Because the Container height is constant and it is visible on the screen so the scroll isn't needed. The Text is limited by Container, so if the Text is outside the Container then the Text need to be scrolled. "
+                            .text
+                            .textStyle(captionStyle!)
+                            .make()
+                            .p16(),
+                      ],
+                    ).py64(),
+                  ),
                 ),
               ),
             ),
