@@ -63,11 +63,13 @@ class HomeDetailPage extends StatelessWidget {
                             .color(context.accentColor)
                             .bold
                             .make(),
-                        catalog.desc.text.xl.textStyle(captionStyle!).make(),
+                        catalog.desc.text.xl
+                            .textStyle(context.captionStyle!)
+                            .make(),
                         10.heightBox,
                         "The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using like readable English. Because the Container height is constant and it is visible on the screen so the scroll isn't needed. The Text is limited by Container, so if the Text is outside the Container then the Text need to be scrolled. "
                             .text
-                            .textStyle(captionStyle!)
+                            .textStyle(context.captionStyle!)
                             .make()
                             .p16(),
                       ],

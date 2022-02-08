@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 
-
-class CatalogModel{
+class CatalogModel {
   static List<Item>? items;
+
+  //get item by id
+
+  static Item getById(int id) =>
+      items!.firstWhere((element) => element.id == id, orElse: null);
+
+  static Item getByPosition(int pos) => items![pos];  
+
 }
 
 class Item {
@@ -13,9 +20,15 @@ class Item {
   final String image;
   final String color;
 
-  Item({required this.id, required this.name, required this.desc, required this.price, required this.image, required this.color}); 
+  Item(
+      {required this.id,
+      required this.name,
+      required this.desc,
+      required this.price,
+      required this.image,
+      required this.color});
 
-  factory Item.fromMap(Map<String,dynamic> map){
+  factory Item.fromMap(Map<String, dynamic> map) {
     return Item(
       id: map["id"],
       name: map["name"],
@@ -27,11 +40,11 @@ class Item {
   }
 
   toMap() => {
-      "id": id,
-      "name": name,
-      "desc": desc,
-      "price": price,
-      "image": image,
-      "color": color,
-  };
+        "id": id,
+        "name": name,
+        "desc": desc,
+        "price": price,
+        "image": image,
+        "color": color,
+      };
 }
