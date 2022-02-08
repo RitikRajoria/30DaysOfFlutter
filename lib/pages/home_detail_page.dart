@@ -9,16 +9,17 @@ class HomeDetailPage extends StatelessWidget {
   const HomeDetailPage({Key? key, required this.catalog})
       : assert(catalog != null),
         super(key: key);
+
   @override
   Widget build(BuildContext context) {
     var captionStyle = context.captionStyle;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: MyTheme.creamColor,
+        backgroundColor: Colors.transparent,
       ),
-      backgroundColor: MyTheme.creamColor,
+      backgroundColor: context.theme.canvasColor,
       bottomNavigationBar: Container(
-        color: Colors.white,
+        color: context.cardColor,
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceBetween,
           buttonPadding: EdgeInsets.zero,
@@ -28,7 +29,7 @@ class HomeDetailPage extends StatelessWidget {
               onPressed: () {},
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(
-                  MyTheme.darkBluishColor,
+                  context.theme.buttonColor,
                 ),
                 shape: MaterialStateProperty.all(
                   StadiumBorder(),
@@ -53,13 +54,13 @@ class HomeDetailPage extends StatelessWidget {
                 arcType: VxArcType.CONVEY,
                 edge: VxEdge.TOP,
                 child: Container(
-                  color: Colors.white,
+                  color: context.cardColor,
                   width: context.screenWidth,
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
                         catalog.name.text.xl4
-                            .color(MyTheme.darkBluishColor)
+                            .color(context.accentColor)
                             .bold
                             .make(),
                         catalog.desc.text.xl.textStyle(captionStyle!).make(),
